@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Clone</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f0f2f5; }
+        .nav { background: #1877f2; padding: 10px; color: white; text-align: center; font-size: 20px; font-weight: bold; }
+        .container { max-width: 800px; margin: 20px auto; display: none; }
+        .sidebar { width: 250px; background: white; padding: 15px; position: fixed; height: 100vh; box-shadow: 2px 0 5px rgba(0,0,0,0.1); }
+        .main-content { margin-left: 270px; padding: 20px; display: none; }
+        .input { width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 5px; }
+        .button { display: block; width: 100%; padding: 10px; margin-top: 10px; background: #1877f2; color: white; text-align: center; text-decoration: none; border-radius: 5px; }
+        .post { background: white; padding: 10px; margin: 10px 0; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+        .friend-request { display: flex; justify-content: space-between; padding: 10px; background: white; margin: 5px 0; border-radius: 5px; }
+        .friend-button { background: #42b72a; color: white; padding: 5px 10px; border: none; border-radius: 3px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div id="signin" class="container" style="display: block;">
+        <div class="nav">Sign In</div>
+        <input type="text" placeholder="Email or Phone" class="input">
+        <input type="password" placeholder="Password" class="input">
+        <a href="#main" class="button">Log In</a>
+        <a href="#signup" class="button" style="background: green;">Sign Up</a>
+    </div>
+    
+    <div id="signup" class="container">
+        <div class="nav">Sign Up</div>
+        <input type="text" placeholder="Full Name" class="input">
+        <input type="text" placeholder="Email or Phone" class="input">
+        <input type="password" placeholder="Password" class="input">
+        <a href="#main" class="button">Create Account</a>
+    </div>
+    
+    <div id="main" class="main-content">
+        <div class="nav">Facebook Clone</div>
+        <div class="sidebar">
+            <p><strong>Manisha Sharma</strong></p>
+            <p>Friends</p>
+            <p>Memories</p>
+            <p>Saved</p>
+            <p>Groups</p>
+            <p>Marketplace</p>
+            <p>Events</p>
+            <p><a href="#friend-requests">Friend Requests</a></p>
+            <a href="#signin" class="button" style="background: red;">Log Out</a>
+        </div>
+        <input type="text" placeholder="What's on your mind?" class="input">
+        <div class="post"><strong>Gurjap:</strong> Enjoying my day!</div>
+        <div class="post"><strong>Ravi:</strong> Had a great weekend!</div>
+    </div>
+    
+    <div id="friend-requests" class="container">
+        <div class="nav">Friend Requests</div>
+        <div class="friend-request">
+            <span>Ravi</span>
+            <button class="friend-button">Accept</button>
+        </div>
+        <div class="friend-request">
+            <span>Gurjap</span>
+            <button class="friend-button">Accept</button>
+        </div>
+        <a href="#main" class="button">Back to Main</a>
+    </div>
+    
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                document.querySelectorAll('.container, .main-content').forEach(page => page.style.display = 'none');
+                document.querySelector(this.getAttribute('href')).style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
