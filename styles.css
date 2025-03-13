@@ -22,9 +22,9 @@ body {
   margin-top: 10px;
 }
 .card {
-  max-width: 400px;
+  max-width: 450px;
+  margin-top: 20px;
 }
-
 .container,
 .main-content {
   display: none;
@@ -51,4 +51,18 @@ input:focus {
 .btn:hover {
   opacity: 0.9;
   cursor: pointer;
+}
+
+.post + .post {
+  margin-top: 20px;
+}
+
+#signin .btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+#signin .btn-danger:hover {
+  background-color: #c82333;
+  border-color: #c82333;
 }
