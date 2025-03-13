@@ -1,13 +1,29 @@
 //this page is created by Ravi Kumar
-function login() {
-    let username = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
-    let message = document.getElementById("message");
-    
-    if (username === "admin" && password === "password123") {
-        alert("Login successful!");
-        message.textContent = "";
-    } else {
-        message.textContent = "Invalid username or password";
-    }
+
+let users = {}; // Stores registered users
+
+function showSection(section) {
+  document.querySelectorAll(".container, .main-content").forEach(div => div.style.display = "none");
+  document.getElementById(section).style.display = "block";
+}
+
+// Signup Function
+function signup() {
+  let name = document.getElementById("signup-name").value;
+  let username = document.getElementById("signup-username").value;
+  let password = document.getElementById("signup-password").value;
+
+  if (!name || !username || !password) {
+    alert("All fields are required!");
+    return;
+  }
+
+  if (users[username]) {
+    alert("Username already exists! Try logging in.");
+    return;
+  }
+
+  users[username] = { name, password };
+  alert("Account created successfully! Please log in.");
+  showSection("signin");
 }
