@@ -41,3 +41,9 @@ function signup() {
       alert("Invalid username or password!");
     }
   }
+
+   // Logout Function
+   function logout() {
+    alert("You have been logged out!");
+    showSection("signin");
+  }
