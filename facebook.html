@@ -61,7 +61,7 @@
     <div id="main" class="container-fluid mt-4" style="display: none">
       <div class="row">
         <div class="col-md-3 bg-light p-3 rounded shadow-sm">
-          <h4>Facebook Clone</h4>
+          <h4 class="text-center"><strong>Facebook Clone</strong></h4>
           <p><strong>Manisha Sharma</strong></p>
           <p>Friends</p>
           <p>Memories</p>
@@ -115,11 +115,9 @@
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         function showPage(targetId) {
-          document
-            .querySelectorAll(".container, .main-content")
-            .forEach((page) => {
-              page.style.display = "none";
-            });
+          document.querySelectorAll(".container-fluid").forEach((page) => {
+            page.style.display = "none";
+          });
 
           let targetPage = document.getElementById(targetId);
           if (targetPage) {
