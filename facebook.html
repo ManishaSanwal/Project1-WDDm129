@@ -13,18 +13,18 @@
   <body>
     <div
       id="signin"
-      class="container d-flex flex-column align-items-center justify-content-center vh-100"
+      class="container-fluid d-flex flex-column align-items-center justify-content-center vh-100"
     >
       <div class="card p-4 shadow-sm text-center">
         <h2 class="text-center my-3">Sign In</h2>
         <input
           type="text"
-          class="form-control my-2"
+          class="form-control my-2 col-12 col-md-6"
           placeholder="Email or Phone"
         />
         <input
           type="password"
-          class="form-control my-2"
+          class="form-control my-2 col-12 col-md-6"
           placeholder="Password"
         />
         <a href="#main" class="btn btn-primary w-100 my-2">Log In</a>
@@ -34,27 +34,31 @@
 
     <div
       id="signup"
-      class="container d-flex flex-column align-items-center justify-content-center vh-100"
+      class="container-fluid d-flex flex-column align-items-center justify-content-center vh-100"
       style="display: none"
     >
       <div class="card p-4 shadow-sm text-center">
         <h2 class="mb-3">Sign Up</h2>
-        <input type="text" class="form-control my-2" placeholder="Full Name" />
         <input
           type="text"
-          class="form-control my-2"
+          class="form-control my-2 col-12 col-md-6"
+          placeholder="Full Name"
+        />
+        <input
+          type="text"
+          class="form-control my-2 col-12 col-md-6"
           placeholder="Email or Phone"
         />
         <input
           type="password"
-          class="form-control my-2"
+          class="form-control my-2 col-12 col-md-6"
           placeholder="Password"
         />
         <a href="#main" class="btn btn-primary w-100 my-2">Create Account</a>
       </div>
     </div>
 
-    <div id="main" class="container mt-4" style="display: none">
+    <div id="main" class="container-fluid mt-4" style="display: none">
       <div class="row">
         <div class="col-md-3 bg-light p-3 rounded shadow-sm">
           <h4>Facebook Clone</h4>
@@ -72,7 +76,7 @@
         <div class="col-md-9">
           <input
             type="text"
-            class="form-control mb-3"
+            class="form-control mb-3 col-12 col-md-6"
             placeholder="What's on your mind?"
           />
           <div class="post card p-3">
@@ -91,7 +95,7 @@
 
     <div
       id="friend-requests"
-      class="container d-flex flex-column align-items-center justify-content-center vh-100"
+      class="container-fluid d-flex flex-column align-items-center justify-content-center vh-100"
       style="display: none"
     >
       <div class="card p-4 shadow-sm text-center">
@@ -114,18 +118,17 @@
           document
             .querySelectorAll(".container, .main-content")
             .forEach((page) => {
-              page.style.display = "none"; // Hide all sections
+              page.style.display = "none";
             });
 
           let targetPage = document.getElementById(targetId);
           if (targetPage) {
-            targetPage.style.display = "block"; // Show the selected section
+            targetPage.style.display = "block";
           }
         }
 
         document.querySelectorAll('a[href^="#"]').forEach((link) => {
           link.addEventListener("click", function (event) {
-            event.preventDefault(); // Prevent the default jump behavior
             let targetId = this.getAttribute("href").substring(1);
             showPage(targetId);
           });
