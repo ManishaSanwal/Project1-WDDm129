@@ -63,3 +63,11 @@ function signup() {
     alert("Thank you, " + name + "! Your message has been sent.");
     document.getElementById("contact-form").reset();
   });
+
+  // Mouse Events for Buttons
+  document.querySelectorAll(".button, .friend-button, .btn").forEach(button => {
+    button.addEventListener("mouseover", () => button.style.background = "#007bff");
+    button.addEventListener("mouseout", () => button.style.background = "");
+    button.addEventListener("mousedown", () => button.textContent = "Clicked!");
+    button.addEventListener("mouseup", () => button.textContent = "Done!");
+  });
