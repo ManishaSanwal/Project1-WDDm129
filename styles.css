@@ -1,0 +1,68 @@
+body {
+  background-color: #f0f2f5;
+}
+
+.sidebar {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.sidebar .button {
+  display: block;
+  margin-top: 10px;
+}
+.card {
+  max-width: 450px;
+  margin-top: 20px;
+}
+.container,
+.main-content {
+  display: none;
+}
+
+#signin {
+  display: block;
+}
+
+.post {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px 0;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  word-wrap: break-word;
+}
+
+input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.btn:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+.post + .post {
+  margin-top: 20px;
+}
+
+#signin .btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+#signin .btn-danger:hover {
+  background-color: #c82333;
+  border-color: #c82333;
+}
