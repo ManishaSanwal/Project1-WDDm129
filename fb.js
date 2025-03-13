@@ -3,7 +3,9 @@
 let users = {}; // Stores registered users
 
 function showSection(section) {
-  document.querySelectorAll(".container, .main-content").forEach(div => div.style.display = "none");
+  document
+    .querySelectorAll(".container, .main-content")
+    .forEach((div) => (div.style.display = "none"));
   document.getElementById(section).style.display = "block";
 }
 
@@ -28,28 +30,30 @@ function signup() {
   showSection("signin");
 }
 
-  // Login Function
-  function login() {
-    let username = document.getElementById("login-username").value;
-    let password = document.getElementById("login-password").value;
+// Login Function
+function login() {
+  let username = document.getElementById("login-username").value;
+  let password = document.getElementById("login-password").value;
 
-    if (users[username] && users[username].password === password) {
-      alert("Login successful! Welcome, " + users[username].name);
-      document.getElementById("display-name").textContent = users[username].name;
-      showSection("main");
-    } else {
-      alert("Invalid username or password!");
-    }
+  if (users[username] && users[username].password === password) {
+    alert("Login successful! Welcome, " + users[username].name);
+    document.getElementById("display-name").textContent = users[username].name;
+    showSection("main");
+  } else {
+    alert("Invalid username or password!");
   }
+}
 
-   // Logout Function
-   function logout() {
-    alert("You have been logged out!");
-    showSection("signin");
-  }
+// Logout Function
+function logout() {
+  alert("You have been logged out!");
+  showSection("signin");
+}
 
-   // Contact Form Function
-   document.getElementById("contact-form").addEventListener("submit", function(event) {
+// Contact Form Function
+document
+  .getElementById("contact-form")
+  .addEventListener("submit", function (event) {
     event.preventDefault();
     let name = document.getElementById("contact-name").value;
     let email = document.getElementById("contact-email").value;
@@ -64,16 +68,20 @@ function signup() {
     document.getElementById("contact-form").reset();
   });
 
-  // Mouse Events for Buttons
-  document.querySelectorAll(".button, .friend-button, .btn").forEach(button => {
-    button.addEventListener("mouseover", () => button.style.background = "#007bff");
-    button.addEventListener("mouseout", () => button.style.background = "");
-    button.addEventListener("mousedown", () => button.textContent = "Clicked!");
-    button.addEventListener("mouseup", () => button.textContent = "Done!");
-  });
+// Mouse Events for Buttons
+document.querySelectorAll(".button, .friend-button, .btn").forEach((button) => {
+  button.addEventListener(
+    "mouseover",
+    () => (button.style.background = "#007bff")
+  );
+  button.addEventListener("mouseout", () => (button.style.background = ""));
+  button.addEventListener("mousedown", () => (button.textContent = "Clicked!"));
+  button.addEventListener("mouseup", () => (button.textContent = "Done!"));
+});
 
-  // Double-click event for posts
-  document.querySelectorAll(".post").forEach(post => {
-    post.addEventListener("dblclick", () => alert("You double-clicked on a post!"));
-  });
-  
+// Double-click event for posts
+document.querySelectorAll(".post").forEach((post) => {
+  post.addEventListener("dblclick", () =>
+    alert("You double-clicked on a post!")
+  );
+});
