@@ -27,7 +27,8 @@ body {
 }
 .container,
 .main-content {
-  display: none;
+  display: grid;
+  grid-template-columns: auto;
 }
 
 #signin {

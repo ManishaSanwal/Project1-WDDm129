@@ -47,3 +47,19 @@ function signup() {
     alert("You have been logged out!");
     showSection("signin");
   }
+
+   // Contact Form Function
+   document.getElementById("contact-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    let name = document.getElementById("contact-name").value;
+    let email = document.getElementById("contact-email").value;
+    let message = document.getElementById("contact-message").value;
+
+    if (!name || !email || !message) {
+      alert("Please fill in all fields!");
+      return;
+    }
+
+    alert("Thank you, " + name + "! Your message has been sent.");
+    document.getElementById("contact-form").reset();
+  });
