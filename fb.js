@@ -71,3 +71,9 @@ function signup() {
     button.addEventListener("mousedown", () => button.textContent = "Clicked!");
     button.addEventListener("mouseup", () => button.textContent = "Done!");
   });
+
+  // Double-click event for posts
+  document.querySelectorAll(".post").forEach(post => {
+    post.addEventListener("dblclick", () => alert("You double-clicked on a post!"));
+  });
+  
