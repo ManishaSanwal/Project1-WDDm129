@@ -3,77 +3,135 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Facebook Clone</title>
+    <title>Minimalistic Facebook</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div
       id="signin"
       class="container d-flex flex-column align-items-center justify-content-center vh-100"
     >
-      <div class="nav">Sign In</div>
-      <input
-        type="text"
-        class="form-control my-2"
-        placeholder="Email or Phone"
-      />
-      <input type="password" class="form-control my-2" placeholder="Password" />
-      <a href="#main" class="btn btn-primary w-100 my-2">Log In</a>
-      <a href="#signup" class="btn btn-success w-100 my-2">Sign Up</a>
+      <div class="card p-4 shadow-sm text-center">
+        <h2 class="text-center my-3">Sign In</h2>
+        <input
+          type="text"
+          class="form-control my-2"
+          placeholder="Email or Phone"
+        />
+        <input
+          type="password"
+          class="form-control my-2"
+          placeholder="Password"
+        />
+        <a href="#main" class="btn btn-primary w-100 my-2">Log In</a>
+        <a href="#signup" class="btn btn-success w-100 my-2">Sign Up</a>
+      </div>
     </div>
 
-    <div id="signup" class="container">
-      <div class="nav">Sign Up</div>
-      <input type="text" placeholder="Full Name" class="input" />
-      <input type="text" placeholder="Email or Phone" class="input" />
-      <input type="password" placeholder="Password" class="input" />
-      <a href="#main" class="button">Create Account</a>
+    <div
+      id="signup"
+      class="container d-flex flex-column align-items-center justify-content-center vh-100"
+      style="display: none"
+    >
+      <div class="card p-4 shadow-sm text-center">
+        <h2 class="mb-3">Sign Up</h2>
+        <input type="text" class="form-control my-2" placeholder="Full Name" />
+        <input
+          type="text"
+          class="form-control my-2"
+          placeholder="Email or Phone"
+        />
+        <input
+          type="password"
+          class="form-control my-2"
+          placeholder="Password"
+        />
+        <a href="#main" class="btn btn-primary w-100 my-2">Create Account</a>
+      </div>
     </div>
 
-    <div id="main" class="main-content">
-      <div class="nav">Facebook Clone</div>
-      <div class="sidebar">
-        <p><strong>Manisha Sharma</strong></p>
-        <p>Friends</p>
-        <p>Memories</p>
-        <p>Saved</p>
-        <p>Groups</p>
-        <p>Marketplace</p>
-        <p>Events</p>
-        <p><a href="#friend-requests">Friend Requests</a></p>
-        <a href="#signin" class="button" style="background: red">Log Out</a>
+    <div id="main" class="container mt-4" style="display: none">
+      <div class="row">
+        <div class="col-md-3 bg-light p-3 rounded shadow-sm">
+          <h4>Facebook Clone</h4>
+          <p><strong>Manisha Sharma</strong></p>
+          <p>Friends</p>
+          <p>Memories</p>
+          <p>Saved</p>
+          <p>Groups</p>
+          <p>Marketplace</p>
+          <p>Events</p>
+          <p><a href="#friend-requests">Friend Requests</a></p>
+          <a href="#signin" class="btn btn-danger w-100 mt-3">Log Out</a>
+        </div>
+
+        <div class="col-md-9">
+          <input
+            type="text"
+            class="form-control mb-3"
+            placeholder="What's on your mind?"
+          />
+          <div class="card my-2">
+            <div class="card-body">
+              <strong>Gurjaap:</strong> Enjoying my day!
+            </div>
+          </div>
+          <div class="card my-2">
+            <div class="card-body">
+              <strong>Ravi:</strong> Had a great weekend!
+            </div>
+          </div>
+        </div>
       </div>
-      <input type="text" placeholder="What's on your mind?" class="input" />
-      <div class="post"><strong>Gurjap:</strong> Enjoying my day!</div>
-      <div class="post"><strong>Ravi:</strong> Had a great weekend!</div>
     </div>
 
-    <div id="friend-requests" class="container">
-      <div class="nav">Friend Requests</div>
-      <div class="friend-request">
-        <span>Ravi</span>
-        <button class="friend-button">Accept</button>
+    <div
+      id="friend-requests"
+      class="container d-flex flex-column align-items-center justify-content-center vh-100"
+      style="display: none"
+    >
+      <div class="card p-4 shadow-sm text-center">
+        <h2 class="mb-3">Friend Requests</h2>
+        <div class="d-flex justify-content-between my-2">
+          <span>Ravi</span>
+          <button class="btn btn-primary">Accept</button>
+        </div>
+        <div class="d-flex justify-content-between my-2">
+          <span>Gurjaap</span>
+          <button class="btn btn-primary">Accept</button>
+        </div>
+        <a href="#main" class="btn btn-secondary w-100 mt-3">Back to Main</a>
       </div>
-      <div class="friend-request">
-        <span>Gurjap</span>
-        <button class="friend-button">Accept</button>
-      </div>
-      <a href="#main" class="button">Back to Main</a>
     </div>
 
     <script>
-      document.querySelectorAll('a[href^="#"]').forEach((link) => {
-        link.addEventListener("click", function (event) {
-          event.preventDefault();
+      document.addEventListener("DOMContentLoaded", function () {
+        function showPage(targetId) {
           document
             .querySelectorAll(".container, .main-content")
-            .forEach((page) => (page.style.display = "none"));
-          document.querySelector(this.getAttribute("href")).style.display =
-            "block";
+            .forEach((page) => {
+              page.style.display = "none"; // Hide all sections
+            });
+
+          let targetPage = document.getElementById(targetId);
+          if (targetPage) {
+            targetPage.style.display = "block"; // Show the selected section
+          }
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach((link) => {
+          link.addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent the default jump behavior
+            let targetId = this.getAttribute("href").substring(1);
+            showPage(targetId);
+          });
         });
+
+        showPage("signin");
       });
     </script>
   </body>

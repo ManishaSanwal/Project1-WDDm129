@@ -1,0 +1,21 @@
+body {
+  background-color: #f0f2f5;
+}
+
+.sidebar p {
+  padding: 8px;
+  font-weight: bold;
+}
+
+.card {
+  max-width: 400px;
+}
+
+.container,
+.main-content {
+  display: none;
+}
+
+#signin {
+  display: block;
+}
