@@ -13,8 +13,8 @@
   <body>
     <div id="signin" class="container" style="display: block">
       <div class="nav">Sign In</div>
-      <input type="text" placeholder="Email or Phone" class="input" />
-      <input type="password" placeholder="Password" class="input" />
+      <input type="text" placeholder="Email or Phone" class="input" id="username"/>
+      <input type="password" placeholder="Password" class="input" id="password"/>
       <a href="#main" class="button">Log In</a>
       <a href="#signup" class="button" style="background: green">Sign Up</a>
     </div>
@@ -57,6 +57,19 @@
       </div>
       <a href="#main" class="button">Back to Main</a>
     </div>
+
+    <footer class="text-center mt-4">
+      <p>&copy; 2025 Facebook Clone. All rights reserved.</p>
+      <h4>Contact Us</h4>
+      <form id="contact-form">
+        <input type="text" id="contact-name" placeholder="Your Name" class="form-control mb-2" required />
+        <input type="email" id="contact-email" placeholder="Your Email" class="form-control mb-2" required />
+        <textarea id="contact-message" placeholder="Your Message" class="form-control mb-2" required></textarea>
+        <button type="submit" class="btn btn-primary">Send</button>
+      </form>
+      <p id="contact-response" style="color: green; margin-top: 10px;"></p>
+    </footer>
+
 
     <!-- <script>
       document.querySelectorAll('a[href^="#"]').forEach((link) => {
