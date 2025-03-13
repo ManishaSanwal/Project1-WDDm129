@@ -27,3 +27,17 @@ function signup() {
   alert("Account created successfully! Please log in.");
   showSection("signin");
 }
+
+  // Login Function
+  function login() {
+    let username = document.getElementById("login-username").value;
+    let password = document.getElementById("login-password").value;
+
+    if (users[username] && users[username].password === password) {
+      alert("Login successful! Welcome, " + users[username].name);
+      document.getElementById("display-name").textContent = users[username].name;
+      showSection("main");
+    } else {
+      alert("Invalid username or password!");
+    }
+  }
