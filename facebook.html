@@ -1,130 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Facebook Clone</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <script src="/Project1-WDDm129/fb.js"></script>
-    <link rel="stylesheet" href="/Project1-WDDm129/styles.css" />
-  </head>
-  <body class="bg-light">
-    <div
-      id="signin"
-      class="container container my-5 p-4 border rounded shadow-sm"
-      style="display: block"
-    >
-      <div class="nav mb-4 text-center">Sign In</div>
-      <input
-        type="text"
-        placeholder="Email or Phone"
-        class="input form-control mb-3"
-        id="login-username"
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        class="input form-control mb-3"
-        id="login-password"
-      />
-      <a href="#main" class="btn btn-primary w-100 mb-2">Log In</a>
-      <a href="#signup" class="btn btn-success w-100" style="background: green"
-        >Sign Up</a
-      >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="fb2.js"></script>
+</head>
+<body class="bg-light">
+  <!-- from here sign in page of html is present-->
+    <div id="signin" class="container active">
+        <div class="nav">Sign In</div>
+        <form id="login-form">
+            <input type="text" placeholder="Email or Phone" class="input" id="login-username" required />
+            <input type="password" placeholder="Password" class="input" id="login-password" required />
+            <button type="submit" class="button">Log In</button>
+        </form>
+        <button onclick="showSignup()" class="button" style="background: green">Sign Up</button>
+    </div>
+    <!-- here sign up page of facebook -->
+    <div id="signup" class="container" style="display: none;">
+      <div class="nav">Sign Up</div>
+      <form id="signup-form" onsubmit="handleSignup(event)">
+          <input type="text" placeholder="Full Name" class="input" id="signup-name" required />
+          <input type="text" placeholder="Email or Phone" class="input" id="signup-username" required />
+          <input type="password" placeholder="Password" class="input" id="signup-password" required />
+          <input type="password" placeholder="Confirm Password" class="input" id="signup-confirm-password" required />
+          <button type="submit" class="button">Create Account</button>
+      </form>
+      <button onclick="showLogin()" class="button" style="background: blue">Already have an account? Log In</button>
+  </div>
+  
+<!--from Here main page of Facebook is start-->
+    <div id="main" class="container-fluid" style="display: none">
+        <div class="nav text-center bg-primary text-white p-2">
+            <h2>Facebook Clone</h2> <!-- Centered Title -->
+            
+        </div>
+        <div class="row">
+          <div class="col-md-3 bg-light p-3">
+            <p><strong id="user-name"></strong></p>
+            <ul class="list-unstyled">
+                <li><a href="#" class="btn btn-outline-primary w-100 mb-2">Friends</a></li>
+                <li><a href="#" class="btn btn-outline-primary w-100 mb-2">Memories</a></li>
+                <li><a href="#" class="btn btn-outline-primary w-100 mb-2">Saved</a></li>
+                <li><a href="#" class="btn btn-outline-primary w-100 mb-2">Groups</a></li>
+                <li><a href="#" class="btn btn-outline-primary w-100 mb-2">Marketplace</a></li>
+                <li><a href="#" class="btn btn-outline-primary w-100 mb-2">Events</a></li>
+                <li><a href="#friend-requests" class="btn btn-outline-primary w-100 mb-2">Friend Requests</a></li>
+            </ul>
+            <a href="#signin" class="btn btn-danger w-100" onclick="logout()">Log Out</a>
+        </div>
+              <div class="col-md-9 p-3">
+                <div class="mb-3">
+                    <input type="text" placeholder="What's on your mind?" class="form-control" id="think1" />
+                    <button class="btn btn-primary mt-2" onclick="postContent()">Post</button> <!-- Post button -->
+                </div>
+                <div id="posts"> <!-- Container to display posted content -->
+                    <div class="post border p-2 mb-2"><strong>Gurjap:</strong> Enjoying my day!</div>
+                    <div class="post border p-2 mb-2"><strong>Ravi:</strong> Had a great weekend!</div>
+                </div>
+                <div id="friend-requests" class="border p-3 mt-4">
+                    <h5>Friend Requests</h5>
+                    <div class="friend-request d-flex justify-content-between p-2 border">
+                        <span>Ravi</span>
+                        <button class="btn btn-success btn-sm">Accept</button>
+                    </div>
+                    <div class="friend-request d-flex justify-content-between p-2 border">
+                        <span>Gurjap</span>
+                        <button class="btn btn-success btn-sm">Accept</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div id="signup" class="container my-5 p-4 border rounded shadow-sm">
-      <div class="nav mb-4 text-center">Sign Up</div>
-      <input
-        type="text"
-        placeholder="Full Name"
-        class="input form-control mb-3"
-        id="signup-name"
-      />
-      <input
-        type="text"
-        placeholder="Email or Phone"
-        class="input form-control mb-3"
-        id="signup-username"
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        class="input form-control mb-3"
-        id="signup-password"
-      />
-      <a href="#main" class="btn btn-primary w-100">Create Account</a>
-    </div>
-
-    <div id="main" class="main-content container my-5" style="display: block">
-      <div class="nav mb-4 text-center">Facebook Clone</div>
-      <div class="sidebar p-3 border rounded shadow-sm">
-        <p><strong>Manisha Sharma</strong></p>
-        <p>Friends</p>
-        <p>Memories</p>
-        <p>Saved</p>
-        <p>Groups</p>
-        <p>Marketplace</p>
-        <p>Events</p>
-        <p><a href="#friend-requests">Friend Requests</a></p>
-        <a href="#signin" class="btn btn-danger w-100" style="background: red"
-          >Log Out</a
-        >
-      </div>
-      <input
-        type="text"
-        placeholder="What's on your mind?"
-        class="input form-control"
-      />
-      <div class="post mb-3 p-3 bg-white border rounded shadow-sm">
-        <strong>Gurjaap:</strong> Enjoying my day!
-      </div>
-      <div class="post post mb-3 p-3 bg-white border rounded shadow-sm">
-        <strong>Ravi:</strong> Had a great weekend!
-      </div>
-    </div>
-
-    <div id="friend-requests" class="container my-5">
-      <div class="nav mb-4 text-center">Friend Requests</div>
-      <div class="friend-request mb-3">
-        <span>Ravi</span>
-        <button class="btn btn-success float">Accept</button>
-      </div>
-      <div class="friend-request mb-3">
-        <span>Gurjaap</span>
-        <button class="btn btn-success float">Accept</button>
-      </div>
-      <a href="#main" class="btn btn-link">Back to Main</a>
-    </div>
-
-    <footer class="text-center mt-4 py-3 bg-dark text-white">
+    <footer class="text-center mt-4">
       <p>&copy; 2025 Facebook Clone. All rights reserved.</p>
       <h4>Contact Us</h4>
-      <form id="contact-form" class="mb-3">
-        <input
-          type="text"
-          id="contact-name"
-          placeholder="Your Name"
-          class="form-control mb-2"
-        />
-        <input
-          type="email"
-          id="contact-email"
-          placeholder="Your Email"
-          class="form-control mb-2"
-        />
-        <textarea
-          id="contact-message"
-          placeholder="Your Message"
-          class="form-control mb-2"
-        ></textarea>
-        <button type="submit" class="btn btn-primary">Send</button>
+      <button onclick="toggleContactForm()" class="btn btn-secondary">Contact Us</button>
+      <form id="contact-form" style="display: none;">
+          <input type="text" id="contact-name" placeholder="Your Name" class="form-control mb-2" required />
+          <input type="email" id="contact-email" placeholder="Your Email" class="form-control mb-2" required />
+          <textarea id="contact-message" placeholder="Your Message" class="form-control mb-2" required></textarea>
+          <button type="submit" class="btn btn-primary">Send</button>
       </form>
-      <p id="contact-response" style="color: green; margin-top: 10px"></p>
-    </footer>
-    -
-  </body>
+      <p id="contact-response" style="color: green; margin-top: 10px;"></p>
+  </footer>
+  
+</body>
 </html>
